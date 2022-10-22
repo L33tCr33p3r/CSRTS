@@ -10,5 +10,10 @@ namespace CSRTS.Source.Unit
 		public int Health { get; set; }
 		public Queue<Order> Orders { get; set; }
 		public FiringStance Stance { get; }
+
+		public void Update()
+		{
+			// Stuff goes here
+		}
 	}
 }

@@ -1,7 +1,7 @@
 namespace CSRTS.Source {
 	internal class Server {
 		private Level _level;
-		private
+		private List<Level> _players;
 
 		public Server(Level level)
 		{
@@ -11,7 +11,7 @@ namespace CSRTS.Source {
 		{
 			while (true)
 			{
-				_level.Update()
+				_level.Update();
 			}
 		}
 	}
