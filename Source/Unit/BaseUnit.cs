@@ -1,5 +1,5 @@
 using SFML.System;
-using SFML.Graphics;
+using CSRTS.Source.Control;
 
 namespace CSRTS.Source.Unit
 {
@@ -8,8 +8,8 @@ namespace CSRTS.Source.Unit
 		public float Speed { get; protected init; }
 		public Vector2f Position { get; protected set; } = new();
 		public int Health { get; set; }
-		public Queue<Order> Orders { get; set; }
-		public FiringStance Stance { get; }
+		public Queue<Order> Orders { get; set; } = new Queue<Order>();
+		public Stance Stance { get; }
 
 		public void Update()
 		{
