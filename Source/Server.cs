@@ -1,4 +1,4 @@
 namespace CSRTS.Source {
-    internal class Server {
-    }
+	internal class Server {
+	}
 }
