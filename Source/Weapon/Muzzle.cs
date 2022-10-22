@@ -1,8 +1,8 @@
 namespace CSRTS.Source.Weapon
 {
-    internal abstract class Muzzle
-    {
-        private int _damage { get; init; }
-        public abstract void Fire();
-    }
+	internal abstract class Muzzle
+	{
+		private int _damage;
+		public abstract void Fire();
+	}
 }
