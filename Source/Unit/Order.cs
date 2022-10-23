@@ -17,6 +17,6 @@ namespace CSRTS.Source.Unit {
 	// b) each order can contain data, such as the spot to move to
 	abstract record Order {
 		public record Move(Vector2f To) : Order;
-		public record Attack(Unit Target) : Order;
+		public record Attack(BaseUnit Target) : Order;
 	}
 }
