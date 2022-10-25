@@ -55,21 +55,21 @@ namespace CSRTS.Client
 
 		}
 
-		public static void Main(string[] args)
-		{
-			string host;
-			int port = 4503;
+		// public static void Main(string[] args)
+		// {
+		// 	string host;
+		// 	int port = 4503;
 
-			//if (args.Length == 0)
-			//	// If no server name is passed as argument to this program,
-			//	// use the current host name as the default.
-			//	host = Dns.GetHostName();
-			//else
-			//	host = args[0];
+		// 	//if (args.Length == 0)
+		// 	//	// If no server name is passed as argument to this program,
+		// 	//	// use the current host name as the default.
+		// 	//	host = Dns.GetHostName();
+		// 	//else
+		// 	//	host = args[0];
 
-			host = "10.17.68.54";
+		// 	host = "10.17.68.54";
 
-			SocketSendReceive(host, port);
-		}
+		// 	SocketSendReceive(host, port);
+		// }
 	}
 }

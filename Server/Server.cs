@@ -58,10 +58,11 @@ namespace CSRTS.Server
 		{
 
 			// Create a socket connection with the specified server and port.
-			using (Socket s = ConnectSocket(server, port))
+			using (Socket s = new(SocketType.Stream, ProtocolType.Tcp))
 			{
 				byte[] result = new byte[8];
 				// Send request to the server.
+				s.Accept
 				s.Receive(result);
 
 				Console.WriteLine(System.Text.Encoding.UTF8.GetString(result));
