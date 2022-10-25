@@ -1,7 +1,7 @@
 using SFML.System;
 using SFML.Graphics;
 
-namespace CSRTS.Source.Unit
+namespace CSRTS.Server.Unit
 {
 	internal abstract class BaseUnit
 	{

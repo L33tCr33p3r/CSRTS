@@ -1,6 +1,6 @@
 using SFML.System;
 
-namespace CSRTS.Source.Unit {
+namespace CSRTS.Server.Unit {
 	enum FireStance {
 		/// <summary> Run away from enemies </summary>
 		Flee,

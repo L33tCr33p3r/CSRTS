@@ -1,4 +1,4 @@
-﻿namespace CSRTS.Source.Unit
+﻿namespace CSRTS.Server.Unit
 {
 	internal enum UnitType
 	{
