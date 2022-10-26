@@ -1,90 +1,42 @@
 using System.Net.Sockets;
 using System.Net;
-using System.Text;
 
 namespace CSRTS.Server
 {
-    internal class Server
-    {
-        //private Level _level;
-        //private List<Level> _players;
+	internal class Server
+	{
+		private Level _level = new();
+		private List<Level> _players = new();
+		private TcpListener _connectionListener;
 
-        //public Server(Level level)
-        //{
-        //    _level = level;
-        //}
-        //public void Run()
-        //{
-        //    while (true)
-        //    {
-        //        _level.Update();
-        //    }
-        //}
-
-		private static Socket ConnectSocket(string server, int port)
+		public Server()
 		{
-			Socket s = null;
-			IPHostEntry hostEntry = null;
-
-			// Get host related information.
-			hostEntry = Dns.GetHostEntry(server);
-
-			// Loop through the AddressList to obtain the supported AddressFamily. This is to avoid
-			// an exception that occurs when the host IP Address is not compatible with the address family
-			// (typical in the IPv6 case).
-			foreach (IPAddress address in hostEntry.AddressList)
+			for (int i = 4503; i <= 4533; i++)
 			{
-				IPEndPoint ipe = new IPEndPoint(address, port);
-				Socket tempSocket =
-					new Socket(ipe.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-
-				tempSocket.Connect(ipe);
-
-				if (tempSocket.Connected)
+				try
 				{
-					s = tempSocket;
+					IPAddress localIp = IPAddress.Parse("127.0.0.1");
+					Console.WriteLine(localIp.ToString());
+					_connectionListener = new(localIp, i);
 					break;
 				}
-				else
+				catch
 				{
-					continue;
+					
 				}
 			}
-			return s;
-		}
-
-		// This method requests the home page content for the specified server.
-		private static void SocketSendReceive(string server, int port)
-		{
-
-			// Create a socket connection with the specified server and port.
-			using (Socket s = ConnectSocket(server, port))
+			if (_connectionListener == null)
 			{
-				byte[] result = new byte[8];
-				// Send request to the server.
-				s.Receive(result);
-
-				Console.WriteLine(System.Text.Encoding.UTF8.GetString(result));
+				throw new Exception();
 			}
-
 		}
-
-		public static void Main(string[] args)
+		public void Run()
 		{
-			string host;
-			int port = 4503;
-
-			//if (args.Length == 0)
-			//	// If no server name is passed as argument to this program,
-			//	// use the current host name as the default.
-			//	host = Dns.GetHostName();
-			//else
-			//	host = args[0];
-
-			host = "10.17.68.54";
-
-			SocketSendReceive(host, port);
+			_connectionListener.Start();
+			while (true)
+			{
+				_level.Update();
+			}
 		}
 	}
 }
-
