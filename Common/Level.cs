@@ -1,6 +1,6 @@
-using CSRTS.Server.Unit;
+using CSRTS.Common.Unit;
 
-namespace CSRTS.Server
+namespace CSRTS.Common
 {
     internal class Level
     {

@@ -1,4 +1,4 @@
-namespace CSRTS.Server.Unit
+namespace CSRTS.Common.Unit
 {
     internal abstract class Weapon
     {

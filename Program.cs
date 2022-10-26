@@ -1,6 +1,4 @@
-﻿using CSRTS.Server;
-
-namespace CSRTS
+﻿namespace CSRTS
 {
     static class Program
 	{
@@ -10,15 +8,14 @@ namespace CSRTS
 			ServerThread.Start();
 			Thread ClientThread = new(new ThreadStart(ClientStart));
         }
-
 		static void ServerStart()
 		{
-			var Server = new Server.Server();
+			var Server = new Server();
 			Server.Run();
 		}
 		static void ClientStart()
 		{
-			var client = new Client.Client();
+			var client = new Client();
 			client.Run();
 		}
 	}
