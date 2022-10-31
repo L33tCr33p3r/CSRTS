@@ -1,4 +1,4 @@
-﻿namespace CSRTS.Server
+﻿namespace CSRTS.Common
 {
     internal class Player
     {
