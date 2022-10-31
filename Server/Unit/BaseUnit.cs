@@ -14,10 +14,9 @@ namespace CSRTS.Server.Unit
 				return this.Direction;
 			} 
 			protected set {
-				while (value < 0) {
-					value += 360;
-				}
-				this.Direction = value % 360;
+				value = value % 360;
+				if (value < 0) value += 360;
+				this.Direction = value;
 			}
 		}
 		public int Health { get; set; }
