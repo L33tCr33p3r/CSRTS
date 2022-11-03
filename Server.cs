@@ -2,6 +2,7 @@ using System.Net.Sockets;
 using System.Net;
 using CSRTS.Common;
 using System.Text;
+using System.Threading;
 
 namespace CSRTS
 {
@@ -23,6 +24,7 @@ namespace CSRTS
 					break;
 				}
 				catch { }
+				Console.WriteLine("Success!");
 			}
 			if (_connectionListener == null)
 			{
@@ -36,8 +38,36 @@ namespace CSRTS
 			{
 				//_level.Update();
 				var client = _connectionListener.AcceptSocket();
-				client.Send(Encoding.ASCII.GetBytes("hi!"));
+				Console.WriteLine("Accepted connection from " + client.RemoteEndPoint);
+				SendData(client, CommandType.Print, Encoding.UTF8.GetBytes("hi!"));
+				// while (client.Connected)
+				// {
+				// 	// client.Send(Encoding.ASCII.GetBytes(Console.ReadLine()));
+					
+				// }
 			}
+		}
+
+		public static void SendData(Socket client, CommandType command, byte[] msg)
+		{
+			// create message buffer
+			var message = new byte[3 + msg.Length];
+
+			// create header
+			message[0] = (byte)command;
+			(message[1], message[2]) = ((byte)(msg.Length & 0xff), (byte)(msg.Length >> 8)); // (lower, upper)
+			// the order has to be reversed to be correctly read by godot
+
+			// append data
+			msg.CopyTo(message, 3);
+
+			// send to client
+			client.Send(message);
+		}
+
+		public enum CommandType
+		{
+			Print,
 		}
 	}
 }
